@@ -2,9 +2,20 @@ import streamlit as st
 import pandas as pd
 import google.generativeai as genai
 import datetime
-import os
 import matplotlib.pyplot as plt
-plt.rcParams["font.family"] = "MS Gothic"
+import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+import os
+
+# フォントファイルのパス（相対パスで指定）
+font_path = "assets/NotoSansJP-VariableFont_wght.ttf"
+
+# フォント読み込みと設定
+if os.path.exists(font_path):
+    font_prop = fm.FontProperties(fname=font_path)
+    plt.rcParams["font.family"] = font_prop.get_name()
+else:
+    print("❌ フォントファイルが見つかりません:", font_path)
 from pathlib import Path
 import requests
 
@@ -209,13 +220,22 @@ if not df.empty:
     df["date"] = pd.to_datetime(df["date"])
     df_grouped = df.groupby("date")["duration_min"].sum().reset_index()
 
-    fig, ax = plt.subplots()
-    ax.bar(df_grouped["date"], df_grouped["duration_min"], color="skyblue")
+    fig, ax = plt.subplots(figsize=(8, 6))
+
+    # 横棒グラフは日付をY軸にするので、文字列に変換すると見やすい
+    df_grouped["date_str"] = df_grouped["date"].dt.strftime("%Y-%m-%d")
+
+    # 横棒グラフの描画
+    ax.barh(df_grouped["date_str"], df_grouped["duration_min"], color="skyblue")
+
+    # タイトル・ラベル
     ax.set_title("これまでの練習時間")
-    ax.set_xlabel("日付")
-    ax.set_ylabel("練習時間（分）")
-    plt.xticks(rotation=45)
+    ax.set_xlabel("練習時間（分）")
+    ax.set_ylabel("日付")
+
+    # グラフ表示
     st.pyplot(fig)
+
 else:
     st.info("まだ練習記録がありません")
 
