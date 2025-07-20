@@ -3,19 +3,12 @@ import pandas as pd
 import google.generativeai as genai
 import datetime
 import matplotlib.pyplot as plt
-import matplotlib.pyplot as plt
-import matplotlib.font_manager as fm
+from matplotlib import font_manager
 import os
-
-# フォントファイルのパス（相対パスで指定）
 font_path = "assets/NotoSansJP-VariableFont_wght.ttf"
+font_prop = font_manager.FontProperties(fname=font_path)
 
-# フォント読み込みと設定
-if os.path.exists(font_path):
-    font_prop = fm.FontProperties(fname=font_path)
-    plt.rcParams["font.family"] = font_prop.get_name()
-else:
-    print("❌ フォントファイルが見つかりません:", font_path)
+plt.rcParams["font.family"] = font_prop.get_name()
 from pathlib import Path
 import requests
 
