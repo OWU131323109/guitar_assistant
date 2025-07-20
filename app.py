@@ -4,7 +4,7 @@ import google.generativeai as genai
 import datetime
 import os
 import matplotlib.pyplot as plt
-plt.rcParams["font.family"] = "Noto Sans CJK JP"
+plt.rcParams["font.family"] = "MS Gothic"
 from pathlib import Path
 import requests
 
@@ -18,15 +18,14 @@ if "user_name" not in st.session_state:
     st.session_state.user_name = ""
 
 if "goal_time" not in st.session_state:
-    st.session_state.goal_time = 30  # デフォルト値（例：30分）
-
+    st.session_state.goal_time = 30  
 
 #ログイン画面
 if not st.session_state.logged_in:
     st.title("🐼PandaJam🎸")
     st.caption("〜 パンダくんのギター教室 〜")
 
-    st.image("assets/panda-kun.png", width = 200)
+    st.image("assets/panda-kun.png", width = 350)
     IMG_PATH = Path("assets/panda-kun.png").as_posix()
     name = st.text_input("ニックネームを入力してね")
     if st.button("ログイン") and name:
@@ -106,7 +105,7 @@ if st.button("パンダくんからの今日の練習メニュー"):
 
 if st.session_state.today_menu:
     st.markdown("### 🐼 今日のおすすめ練習メニュー")
-    st.image("assets/panda-kun.png", width=120) 
+    st.image("assets/panda-kun.png", width=150) 
     st.write(st.session_state.today_menu)  # response.text ではなく session_state.today_menu を使う
 
 def search_youtube_url(query: str, api_key: str):
