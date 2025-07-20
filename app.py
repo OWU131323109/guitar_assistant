@@ -4,7 +4,7 @@ import google.generativeai as genai
 import datetime
 import os
 import matplotlib.pyplot as plt
-plt.rcParams["font.family"] = "MS Gothic"
+plt.rcParams["font.family"] = "IPAexGothic"
 from pathlib import Path
 import requests
 
@@ -149,7 +149,7 @@ if st.button("♫ パンダくんおすすめの練習曲を教えて"):
         st.write(song_text)
 
         # 曲名抽出と自動検索
-        YOUTUBE_API_KEY = st.secrets["YOUTUBE_API_KEY"]  # secrets.tomlに設定
+        YOUTUBE_API_KEY = st.secrets["YOUTUBE_API_KEY"]  
         lines = song_text.splitlines()
         for line in lines:
             if "/" in line:
@@ -175,7 +175,7 @@ if st.button("パンダくんに聞いてみる") and user_question:
 """
         response = model.generate_content(prompt)
         st.markdown("### 🐾 パンダくんからのアドバイス")
-        st.image("assets/panda-kun.png", width=120)  # 画像だけ表示
+        st.image("assets/panda_teacher.png", width=120)  # 画像だけ表示
         st.write(response.text)
 
 st.markdown("---")
