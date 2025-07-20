@@ -4,7 +4,7 @@ import google.generativeai as genai
 import datetime
 import os
 import matplotlib.pyplot as plt
-plt.rcParams["font.family"] = "IPAexGothic"
+plt.rcParams["font.family"] = "Noto Sans CJK JP"
 from pathlib import Path
 import requests
 
