@@ -185,7 +185,7 @@ if st.button("パンダくんに聞いてみる") and user_question:
 """
         response = model.generate_content(prompt)
         st.markdown("### 🐾 パンダくんからのアドバイス")
-        st.image("assets/panda_teacher.png", width=120)  # 画像だけ表示
+        st.image("assets/panda_kun.png", width=120)  
         st.write(response.text)
 
 st.markdown("---")
