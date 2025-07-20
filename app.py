@@ -178,13 +178,13 @@ if st.button("パンダくんに聞いてみる") and user_question:
 """
         response = model.generate_content(prompt)
         st.markdown("### 🐾 パンダくんからのアドバイス")
-        st.image("assets/panda_kun.png", width=120)  
+        st.image("assets/panda-kun.png", width=120)  
         st.write(response.text)
 
 st.markdown("---")
 
 
-st.header("📝 練習ログをつけよう")
+st.header("📝 練習記録をつけよう")
 
 with st.form("log_form"):
     date = st.date_input("日付を選んでね", value=datetime.date.today())
