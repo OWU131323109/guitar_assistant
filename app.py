@@ -222,9 +222,9 @@ if not df.empty:
     ax.barh(df_grouped["date_str"], df_grouped["duration_min"], color="skyblue")
 
     # タイトル・ラベル
-    ax.set_title("これまでの練習時間")
-    ax.set_xlabel("練習時間（分）")
-    ax.set_ylabel("日付")
+    #ax.set_title("これまでの練習時間")
+    #ax.set_xlabel("練習時間（分）")
+    #ax.set_ylabel("日付")
 
     # グラフ表示
     st.pyplot(fig)
